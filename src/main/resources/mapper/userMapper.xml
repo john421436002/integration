@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.integration.dao.UserDao">
+    <!-- 增加user-->
+    <insert id="addUser" parameterType="org.integration.entity.User">
+      insert into user (username, password, nick_name, address, user_phone, add_date, email)
+      VALUES (#{username},#{password},#{nickname},#{address},#{userphone},#{addDate},#{email})
+    </insert>
+
+    <!--按用户名查询user-->
+    <select id="findUserByUsername" parameterType="String" resultType="org.integration.entity.User">
+        select username,password from user where username = #{username} limit 1
+    </select>
+</mapper>
